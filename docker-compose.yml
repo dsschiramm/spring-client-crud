@@ -1,35 +1,37 @@
 version: '3'
 services:
-    database:
-        image: mysql
-        container_name: database
+    docker-mysql:
+        image: mysql:8.0.21
+        container_name: docker-mysql
         restart: always
         ports:
             - 3306:3306
         environment:
-            MYSQL_ROOT_PASSWORD: 1234
-            MYSQL_DATABASE: sprig-client-crud
-            MYSQL_USER: root
-            MYSQL_PASSWORD: 1234
+            - MYSQL_ROOT_PASSWORD=1234
+            - MYSQL_DATABASE=cliente_crud
+            - MYSQL_USER=root
+            - MYSQL_PASSWORD=1234
 
-    backend:
+    docker-spring:
         build: ./backend
-        container_name: backend
+        container_name: docker-spring
         environment:
-            - MYSQL_DATABASE=sprig-client-crud
+            - MYSQL_DATABASE=cliente_crud
             - MYSQL_USER=root
             - MYSQL_ROOT_PASSWORD=1234
         ports:
             - 8080:8080
-        links:
-            - database
         depends_on:
-            - database
+            - docker-mysql
+        links:
+            - 'docker-mysql:docker-mysql'
 
-    frontend:
+    docker-angular:
         build: ./frontend
-        container_name: frontend
+        container_name: docker-angular
         ports:
             - 4200:80
+        depends_on:
+            - docker-spring
         links:
-            - backend
+            - 'docker-spring:docker-spring'
