@@ -6,8 +6,8 @@ Execução: - Git Clone - (backend) mvnw clean package -Dmaven.test.skip=true - 
 Necessário Docker instalado.
 
 Há 2 hubs docker. (Há também o docker default do mysql que está configurado no arquivo docker-compose.yml).
-BackEnd: https://hub.docker.com/repository/docker/dssschiramm/spring-client-crud-backend
-FrontEnd: https://hub.docker.com/repository/docker/dssschiramm/spring-client-crud-frontend
+- BackEnd: https://hub.docker.com/repository/docker/dssschiramm/spring-client-crud-backend
+- FrontEnd: https://hub.docker.com/repository/docker/dssschiramm/spring-client-crud-frontend
 
 # Back-end - OK
 
