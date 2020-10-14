@@ -5,6 +5,10 @@ Spring Boot Rest API for CRUD operations on simple clients.
 Execução: - Git Clone - (backend) mvnw clean package -Dmaven.test.skip=true - docker-compose up
 Necessário Docker instalado.
 
+Há 2 hubs docker. (Há também o docker default do mysql que está configurado no arquivo docker-compose.yml).
+BackEnd: https://hub.docker.com/repository/docker/dssschiramm/spring-client-crud-backend
+FrontEnd: https://hub.docker.com/repository/docker/dssschiramm/spring-client-crud-frontend
+
 # Back-end - OK
 
 A aplicação, a ser desenvolvida em Java, deverá expor uma API de cadastro, alteração, remoção e consulta de pessoas com as seguintes informações:
