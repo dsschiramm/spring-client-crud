@@ -14,6 +14,7 @@ services:
 
     docker-spring:
         build: './backend'
+        image: 'dssschiramm/spring-client-crud-backend'
         container_name: 'docker-spring'
         environment:
             MYSQL_DATABASE: 'cliente_crud'
@@ -27,6 +28,7 @@ services:
 
     docker-angular:
         build: ./frontend
+        image: 'dssschiramm/spring-client-crud-frontend'
         container_name: docker-angular
         ports:
             - 4200:80
