@@ -1,37 +1,32 @@
 version: '3'
 services:
     docker-mysql:
-        image: mysql:8.0.21
-        container_name: docker-mysql
-        restart: always
+        image: 'mysql:8.0.21'
+        container_name: 'docker-mysql'
+        restart: 'always'
         ports:
-            - 3306:3306
+            - '3306:3306'
         environment:
-            - MYSQL_ROOT_PASSWORD=1234
-            - MYSQL_DATABASE=cliente_crud
-            - MYSQL_USER=root
-            - MYSQL_PASSWORD=1234
+            MYSQL_ROOT_PASSWORD: '1234'
+            MYSQL_DATABASE: 'cliente_crud'
+            MYSQL_USER: 'daniel'
+            MYSQL_PASSWORD: '1234'
 
     docker-spring:
-        build: ./backend
-        container_name: docker-spring
+        build: './backend'
+        container_name: 'docker-spring'
         environment:
-            - MYSQL_DATABASE=cliente_crud
-            - MYSQL_USER=root
-            - MYSQL_ROOT_PASSWORD=1234
+            MYSQL_DATABASE: 'cliente_crud'
+            MYSQL_USER: 'daniel'
+            MYSQL_ROOT_PASSWORD: '1234'
         ports:
-            - 8080:8080
+            - '8080:8080'
         depends_on:
-            - docker-mysql
-        links:
-            - 'docker-mysql:docker-mysql'
+            - 'docker-mysql'
+        restart: 'always'
 
     docker-angular:
         build: ./frontend
         container_name: docker-angular
         ports:
             - 4200:80
-        depends_on:
-            - docker-spring
-        links:
-            - 'docker-spring:docker-spring'
